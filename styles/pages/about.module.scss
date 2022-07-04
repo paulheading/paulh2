@@ -1,0 +1,31 @@
+@import "styles/globals/mixins";
+
+.container {
+  @include container;
+
+  h1 {
+    margin-bottom: 1rem;
+
+    @include medium-up {
+      font-size: $font-size-h1;
+    }
+  }
+
+  p {
+    font-weight: $font-weight-normal;
+
+    @include medium-up {
+      font-size: $font-size-h4;
+    }
+  }
+}
+
+.wrap {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 60rem;
+}
+
+.loading {
+  @include loading;
+}

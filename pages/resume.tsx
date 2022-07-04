@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { getMediumData, getTrelloData, getGemData, getNpmData, getTreehouseData } from 'scripts'
+import { getMediumData, getTrelloData, getGemData, getNpmData, getTreehouseData, getSpotifyData } from 'scripts'
 import type { Resume } from 'types/pages'
 
-function Resume({ medium, trello, gem, npm, treehouse }:Resume) {
+function Resume({ medium, trello, gem, npm, treehouse, spotify }:Resume) {
 
   useEffect(() => {
     console.log("medium: ", medium);
@@ -10,12 +10,13 @@ function Resume({ medium, trello, gem, npm, treehouse }:Resume) {
     console.log("gem: ", gem);
     console.log("npm: ", npm);
     console.log("treehouse: ", treehouse);
-  },[medium,trello,gem,npm,treehouse]);
+    // console.log("spotify: ", spotify);
+  },[medium,trello,gem,npm,treehouse,spotify]);
 
   return (
     <div>
       { medium.items.map(({ title }, index) => <div key={index}>{ title }</div>) }
-      { trello.projects.cards.map(({ name }, index) => <div key={index}>{ name }</div>) }
+      { trello.map(({ name }, index) => <div key={index}>{ name }</div>) }
     </div>
   )
 }
@@ -24,10 +25,11 @@ export async function getStaticProps() {
   return { 
     props: {
       medium: await getMediumData(),
-      trello: await getTrelloData(),
+      trello: await getTrelloData('roles'),
       gem: await getGemData(),
       npm: await getNpmData(),
       treehouse: getTreehouseData(),
+      // spotify: await getSpotifyData(),
     }
   }
 }

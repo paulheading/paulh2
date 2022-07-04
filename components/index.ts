@@ -1,3 +1,7 @@
 export * from './layout'
 export * from './hero'
 export * from './marquee'
+export * from './head'
+export * from './header'
+export * from './desktop'
+export * from './badge'

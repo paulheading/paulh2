@@ -1,0 +1,90 @@
+@import "styles/globals/mixins";
+
+.container {
+  min-width: $min-width-site;
+  padding: 2rem 2rem 1rem;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  left: 0;
+}
+
+.wrap {
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 60rem;
+  display: flex;
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+
+  @include xsmall-up {
+    gap: 1.25rem;
+  }
+}
+
+.button_core {
+  text-decoration: none;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-sm;
+}
+
+.solid_button {
+  composes: button_core;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+
+  @include xsmall-up {
+    font-size: $font-size-h4;
+  }
+}
+
+.link_button {
+  composes: button_core;
+  border-bottom: 0.25rem solid transparent;
+  border-top: 0.25rem solid transparent;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+
+  @include xsmall-up {
+    font-size: $font-size-h4;
+  }
+
+  @include focus {
+    border-bottom-color: black;
+  }
+}
+
+.about_button_home {
+  composes: solid_button;
+  background-color: black;
+  color: white;
+
+  @include focus {
+    @include single-box;
+  }
+}
+
+.about_button {
+  composes: solid_button;
+  background-color: black;
+  color: white;
+
+  @include focus {
+    @include single-box(black);
+    background-color: transparent;
+    color: black;
+  }
+}
+
+.resume_button {
+  composes: link_button;
+}
+
+.home_button {
+  composes: link_button;
+}

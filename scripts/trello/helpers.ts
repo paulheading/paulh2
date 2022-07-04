@@ -12,16 +12,12 @@ const trelloAttachments = (target: string | undefined = list.hero) => trello(`ca
 
 const trelloActions = (target: string | undefined = list.hero) => trello(`cards/${target}/actions`);
 
-const readmore = (value:readmoreType[] | undefined) => {
-  if (value === undefined) return null;
+const readmore = (value:readmoreType[]) => {
   const result = value.filter(({ name }) => name === "Read more")[0];
   return result !== undefined ? result : null;
 }
 
-const prepLabels = (target:prepLabel[]) => {
-  if (!target) return null;
-  return !target.length ? [{ name: 'Personal', color: 'grey' }] : target.map(({ name, color }) => ({ name, color }));
-}
+const prepLabels = (target:prepLabel[]) => !target.length ? [{ name: 'Personal', color: 'grey' }] : target.map(({ name, color }) => ({ name, color }));
 
 const shuffleArray = (array:[]) => array.sort(() => Math.random() - 0.5);
 

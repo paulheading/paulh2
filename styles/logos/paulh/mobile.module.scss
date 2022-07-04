@@ -1,0 +1,21 @@
+@import "styles/globals/mixins";
+
+@include medium-up {
+  .container {
+    display: none;
+  }
+}
+
+@include medium-down {
+  .container {
+    height: 2.75rem;
+    display: block;
+    width: auto;
+  }
+}
+
+@include xsmall-down {
+  .container {
+    height: 2.5rem;
+  }
+}

@@ -1,6 +1,6 @@
 import { base, id, secret } from 'scripts/spotify/variables'
 
-function getToken() {
+async function getToken() {
   return fetch(base.token, {
     method: "POST",
     headers: {

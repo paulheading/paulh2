@@ -1,12 +1,23 @@
+import { useRef } from 'react'
+import type { Hero as HeroType } from 'types/components'
+import styles from 'styles/hero.module.scss'
+import parse from 'html-react-parser'
 
-interface Hero {
-  count: number
-}
+const Hero = ({ hero }:HeroType) => {
+  const { id, name, svg, more } = hero;
+  const nameData = { name, more };
+  const animation = useRef(null);
 
-const Hero = ({ count }:Hero) => {
+  console.log("hero: ", hero);
+  
   return (
-    <div>
-      Hero: { count }
+    <div className={styles.container} id={id}>
+      <div className={styles.wrap}>
+        <h1 className={styles.title}>
+          { more ? <a className={styles.link} href={more.url}>{ name }</a> : name }         
+        </h1>
+        <div ref={animation} className={styles.svg} id={id}>{svg && parse(svg)}</div>
+      </div>
     </div>
   )
 }

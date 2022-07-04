@@ -1,0 +1,58 @@
+@import "variables";
+@import "mixins/media";
+@import "mixins/focus";
+@import "mixins/loading";
+@import "mixins/desktop";
+
+@mixin input-colors {
+  &,
+  &::placeholder {
+    color: inherit;
+  }
+
+  @include focus {
+    background-color: $focus;
+
+    &,
+    &::placeholder {
+      color: black;
+    }
+  }
+}
+
+@mixin invisible-button {
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  color: inherit;
+  padding: 1rem;
+  border: none;
+}
+
+@mixin hero-colors($a: #4261ff, $b: #ff4262, $c: #ff66b3) {
+  background: linear-gradient(0deg, $a 0%, $b 100%);
+
+  path {
+    stroke: $c;
+  }
+
+  a {
+    @include focus {
+      $tint: rgba($c, 0.5);
+      @include single-box($tint);
+      background-color: $tint;
+    }
+  }
+}
+
+@mixin container {
+  min-width: $min-width-site;
+  padding: 8rem 2rem;
+  text-align: left;
+
+  @include medium-up {
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+  }
+}

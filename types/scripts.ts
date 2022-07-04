@@ -6,8 +6,6 @@ interface readmore {
 }
 
 interface prepLabel {
-  id: string,
-  idBoard: string,
   name: string,
   color: string
 }
@@ -33,7 +31,14 @@ interface trelloCard {
   due: string
   dueComplete: boolean
   id: string
-  labels: []
+  labels: prepLabel[]
+  svg: string
+  marquee: string
+  more: {
+    id: string
+    name: string
+    url: string
+  }
 }
 
 export type { readmore, prepLabel, attachmentData, trelloSvg, trelloCard }
