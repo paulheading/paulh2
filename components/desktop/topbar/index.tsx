@@ -1,4 +1,4 @@
-import styles from 'styles/desktop/topbar.module.scss'
+import styles from 'styles/components/desktop/topbar.module.scss'
 import { Wifi } from 'components/desktop/topbar'
 
 export const Topbar:React.FC = () => {

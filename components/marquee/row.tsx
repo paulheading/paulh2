@@ -1,10 +1,10 @@
-import styles from 'styles/marquee/row.module.scss'
+import styles from 'styles/components/marquee/row.module.scss'
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
-import type { Row as RowType } from 'types/components'
+import type { marqueeRow } from 'types/components'
 
-function Row({ marquee, more }:RowType) {
+function Row({ marquee, more }:marqueeRow) {
   const wrap = useRef<HTMLDivElement>(null);
 
   const defaults = {
@@ -13,9 +13,10 @@ function Row({ marquee, more }:RowType) {
   }
 
   const tl = gsap.timeline({ defaults });
-  const target = wrap.current;
 
-  if (target) tl.set(target, { x: 0 }).to(target, { x: -(defaults.duration * 30) });
+  useEffect(() => {
+    tl.set(wrap.current, { x: 0 }).to(wrap.current, { x: -(defaults.duration * 30) });
+  });
 
   const repeatPhrase = (marquee: string) => {
     let output = [];
@@ -24,10 +25,6 @@ function Row({ marquee, more }:RowType) {
     }
     return output;
   };
-
-  useEffect(() => {
-    tl.restart();
-  },[tl, marquee]);
 
   return (
     <div className={styles.container}>

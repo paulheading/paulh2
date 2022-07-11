@@ -1,8 +1,8 @@
-import styles from 'styles/marquee/tab.module.scss'
+import styles from 'styles/components/marquee/tab.module.scss'
 import Link from 'next/link'
-import type { CreateLink, Tab as TabStyle } from 'types/components'
+import type { marqueeLink, marqueeTab } from 'types/components'
 
-function CreateLink({ children, more }:CreateLink) {
+function MarqueeLink({ children, more }:marqueeLink) {
   if (more) {
     return (
       <a href={more.url} className={styles.link}>
@@ -20,12 +20,12 @@ function CreateLink({ children, more }:CreateLink) {
   }
 }
 
-function Tab({ more }:TabStyle) {
+function Tab({ more }:marqueeTab) {
   return (
     <div className={styles.container}>
-      <CreateLink more={ more }>
+      <MarqueeLink more={ more }>
         See Project
-      </CreateLink>
+      </MarqueeLink>
     </div>
   )
 }

@@ -1,0 +1,29 @@
+@import "styles/globals/mixins";
+
+.row {
+  @include row;
+}
+
+.double_row {
+  @include doubleRow;
+}
+
+.name_row {
+  @include doubleRow(false);
+}
+
+.triple_row {
+  @include tripleRow;
+}
+
+.list {
+  @include resumeList;
+}
+
+.skills {
+  margin: -0.25rem;
+}
+
+.badge {
+  margin: 0.25rem;
+}

@@ -1,25 +1,36 @@
 
-import { trelloCard } from 'types/scripts'
+import { trelloCard, mediumArticle } from 'types/scripts'
+import { resumeSkill } from 'types/components'
 
-interface Home {
+interface Layout {
   heroes: trelloCard[]
   projects: trelloCard[]
   gem: any
   npm: any
-}
-
-interface Resume {
-  medium: {
-    items: []
-  }
-  trello: trelloCard[]
-  gem: any
-  npm: any
-  treehouse: any
   spotify: any
 }
 
+interface Home extends Layout {}
+
+interface About extends Layout {
+  pages: trelloCard[]
+  roles: trelloCard[]
+  education: trelloCard[]
+}
+
+interface Resume extends Layout {
+  pages: trelloCard[]
+  roles: trelloCard[]
+  education: trelloCard[]
+  articles: mediumArticle[]
+  skills: resumeSkill[]
+}
+
+interface NotFound extends Layout {}
+
 export type {
   Home,
-  Resume
+  About,
+  Resume,
+  NotFound
 }

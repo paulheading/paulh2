@@ -3,6 +3,7 @@
 @import "mixins/focus";
 @import "mixins/loading";
 @import "mixins/desktop";
+@import "mixins/resume";
 
 @mixin input-colors {
   &,
@@ -55,4 +56,10 @@
     padding-bottom: 10rem;
     padding-top: 10rem;
   }
+}
+
+@mixin wrap($width: $max-width-wrap) {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $width;
 }

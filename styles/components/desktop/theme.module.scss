@@ -11,6 +11,12 @@
   }
 }
 
+.window_outer.hidden {
+  transform: scale(0.5);
+  display: none;
+  opacity: 0;
+}
+
 .window_inner {
   @include window_inner;
   background-color: black;

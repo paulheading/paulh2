@@ -1,35 +1,52 @@
-import { useEffect } from 'react'
-import { getMediumData, getTrelloData, getGemData, getNpmData, getTreehouseData, getSpotifyData } from 'scripts'
-import type { Resume } from 'types/pages'
+import { getLayoutData, getTrelloData, getTreehouseData, getMediumData } from 'scripts'
+import styles from 'styles/pages/resume.module.scss'
+import { Layout, CustomHead as Head } from 'components'
+import type { Resume as ResumeType } from 'types/pages'
+import { resume } from 'scripts/seo'
+import { Row, NameRow, BioRow, SkillsRow } from 'components/resume/row'
 
-function Resume({ medium, trello, gem, npm, treehouse, spotify }:Resume) {
-
-  useEffect(() => {
-    console.log("medium: ", medium);
-    console.log("trello: ", trello);
-    console.log("gem: ", gem);
-    console.log("npm: ", npm);
-    console.log("treehouse: ", treehouse);
-    // console.log("spotify: ", spotify);
-  },[medium,trello,gem,npm,treehouse,spotify]);
+function Resume(props:ResumeType) {
+  const { pages, projects, roles, education, skills, articles } = props;
+  const biography = pages.filter(page => page.name === 'Biography')[0];
+  const projectsRow = { cards: projects, articles };
+  const rolesRow = { cards: roles, articles };
+  const educationRow = { cards: education, articles };
 
   return (
-    <div>
-      { medium.items.map(({ title }, index) => <div key={index}>{ title }</div>) }
-      { trello.map(({ name }, index) => <div key={index}>{ name }</div>) }
-    </div>
+    <Layout { ...props }>
+      <Head { ...resume } />
+      <div className={styles.container}>
+        <div className={styles.wrap}>
+          <div className={styles.page}>
+
+            <NameRow />
+
+            <BioRow { ...biography } />
+
+            <Row title="Projects" { ...projectsRow } />
+            
+            <Row title="Roles" { ...rolesRow } />
+
+            <SkillsRow skills={ skills } />
+
+            <Row title="Education" { ...educationRow } />
+
+          </div>
+        </div>
+      </div>
+    </Layout>    
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() {  
   return { 
     props: {
-      medium: await getMediumData(),
-      trello: await getTrelloData('roles'),
-      gem: await getGemData(),
-      npm: await getNpmData(),
-      treehouse: getTreehouseData(),
-      // spotify: await getSpotifyData(),
+      ...await getLayoutData(),
+      roles: await getTrelloData('roles'),
+      education: await getTrelloData('education'),
+      pages: await getTrelloData('pages'),
+      articles: await getMediumData(),
+      skills: getTreehouseData()
     }
   }
 }

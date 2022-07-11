@@ -5,7 +5,7 @@ async function getToken() {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Basic " + Buffer.from(`${id.client}:${secret.client}`,'base64'),
+      Authorization: "Basic " + Buffer.from(`${id.client}:${secret.client}`).toString('base64'),
     },
     body: "grant_type=client_credentials",
   })
@@ -22,3 +22,4 @@ export {
   getToken,
   pathPlaylist
 }
+

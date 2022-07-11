@@ -1,0 +1,39 @@
+@import "styles/globals/mixins";
+
+.badge {
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  line-height: $line-height-md;
+}
+
+.date {
+  margin-top: 0.5rem;
+  color: $gray-700;
+}
+
+.copy {
+  margin-top: 0.5rem;
+  color: $gray-700;
+  font-size: $font-size-h6;
+
+  a {
+    @include focus {
+      @include single-box($focus);
+      background-color: $focus;
+      color: black;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.link {
+  @include focus {
+    @include single-box($focus--dark);
+    background-color: $focus--dark;
+  }
+}

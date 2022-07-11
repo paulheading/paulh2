@@ -10,10 +10,8 @@
 }
 
 .wrap {
+  @include wrap;
   justify-content: space-between;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 60rem;
   display: flex;
 }
 

@@ -4,7 +4,7 @@
   @include window_outer;
 }
 
-.window_outer.closed {
+.window_outer.hidden {
   transform: scale(0.5);
   display: none;
   opacity: 0;
@@ -12,8 +12,12 @@
 
 .window_inner {
   @include window_inner;
-  background-color: black;
-  color: white;
+  background-color: $trello-bg;
+  font-size: $font-size-h5;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  color: $trello-text;
+  font-weight: $font-weight-medium;
 }
 
 .skiplink {

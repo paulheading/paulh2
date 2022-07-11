@@ -1,4 +1,4 @@
-import styles from 'styles/header.module.scss'
+import styles from 'styles/components/header.module.scss'
 import Link from 'next/link'
 import { Desktop, Mobile } from 'logos/paulh'
 import { useRouter } from 'next/router'

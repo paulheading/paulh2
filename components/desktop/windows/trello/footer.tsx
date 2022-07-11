@@ -1,4 +1,4 @@
-import styles from 'styles/desktop/windows/trello/footer.module.scss'
+import styles from 'styles/components/desktop/windows/trello/footer.module.scss'
 import { Plus } from 'components/desktop/windows/trello/plus'
 
 const Footer = () => (

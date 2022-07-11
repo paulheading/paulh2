@@ -1,9 +1,9 @@
-import styles from 'styles/marquee.module.scss'
+import styles from 'styles/components/marquee.module.scss'
 import { Tab } from 'components/marquee/tab'
 import { Row } from 'components/marquee/row'
-import type { Marquee as MarqueeType } from 'types/components'
+import type { marqueeWindow } from 'types/components'
 
-function Marquee({ hero }:MarqueeType) {
+function Marquee({ hero }:marqueeWindow) {
   const { marquee, more } = hero;
 
   return (

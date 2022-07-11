@@ -3,18 +3,20 @@
 .container {
   line-height: $line-height-sm;
   position: absolute;
-  top: -3.25rem;
+  top: -3.125rem;
   width: 100%;
 }
 
 .link {
-  border: 0.25rem solid transparent;
+  border-right: 0.25rem solid transparent;
+  border-left: 0.25rem solid transparent;
+  border-top: 0.25rem solid transparent;
+  padding: 0.75rem 0.75rem 0.875rem;
   border-top-right-radius: 0.25rem;
   border-top-left-radius: 0.25rem;
   text-decoration: underline;
   background-color: black;
   display: inline-block;
-  padding: 0.75rem;
   color: white;
 
   @include focus {

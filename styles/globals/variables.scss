@@ -1,6 +1,6 @@
 $font-sans-serif: arial, sans-serif;
-$font-family-body: "neue-haas-grotesk-text", $font-sans-serif;
-$font-family-headings: "neue-haas-grotesk-display", $font-sans-serif;
+$font-family-body: $font-sans-serif;
+$font-family-headings: $font-sans-serif;
 
 $font-weight-normal: 400;
 $font-weight-medium: 600;
@@ -74,3 +74,7 @@ $topbar: $gray-500;
 $border-radius-lg: 0.5rem;
 
 $min-width-site: 20rem;
+
+$plusp: 1rem;
+
+$max-width-wrap: 60rem;

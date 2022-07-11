@@ -1,4 +1,4 @@
-import styles from 'styles/desktop/windows/trello/header.module.scss'
+import styles from 'styles/components/desktop/windows/trello/header.module.scss'
 import { More } from 'components/desktop/windows/trello/more'
 
 const Header = () => (

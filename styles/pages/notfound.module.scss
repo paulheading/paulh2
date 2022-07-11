@@ -1,0 +1,10 @@
+@import "styles/globals/mixins";
+
+.container {
+  @include container;
+  text-align: center;
+}
+
+.wrap {
+  @include wrap;
+}
