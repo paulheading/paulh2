@@ -7,9 +7,8 @@ async function getGemData() {
   return {
     downloads,
     name,
-    project_uri,
-    version,
-    platform
+    url: project_uri,
+    version
   }
 }
 

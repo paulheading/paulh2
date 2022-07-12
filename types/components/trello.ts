@@ -35,9 +35,10 @@ interface trelloCardMore {
 }
 
 interface trelloCard {
-  actions: trelloCardAction[]
-  attachments: trelloCardAttachment[]
+  actions?: trelloCardAction[]
+  attachments?: trelloCardAttachment[]
   desc: string
+  due: string
   dueComplete: boolean
   id: string
   labels: trelloCardLabel[]
@@ -49,13 +50,15 @@ interface trelloCard {
 }
 
 interface trelloWindow {
-  content: any[]
+  content: trelloCard[]
   className?: string
   id?: string
   visible?: boolean
 }
 
 export type {
+  trelloCardAction,
+  trelloCardAttachment,
   trelloWindow,
   trelloCard
 }

@@ -1,14 +1,6 @@
 
 import { trelloCard, mediumArticle } from 'types/scripts'
-import { resumeSkill } from 'types/components'
-
-interface Layout {
-  heroes: trelloCard[]
-  projects: trelloCard[]
-  gem: any
-  npm: any
-  spotify: any
-}
+import { Layout, resumeSkill } from 'types/components'
 
 interface Home extends Layout {}
 

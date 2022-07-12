@@ -1,13 +1,14 @@
 
 import { trelloCard } from 'types/scripts'
+import { spotifyData, desktopTheme } from 'types/components'
 
 interface Layout {
   children?: React.ReactNode
   heroes: trelloCard[]
   projects: trelloCard[]
-  gem: any
-  npm: any
-  spotify: any
+  gem: desktopTheme
+  npm: desktopTheme
+  spotify: spotifyData
 }
 
 interface Head {
@@ -18,17 +19,6 @@ interface Head {
 
 interface Hero {
   hero: trelloCard
-}
-
-interface Desktop {
-  projects: trelloCard[]
-  gem: any
-  npm: any
-  spotify: {
-    _2020: any
-    _2021: any
-    _2022: any
-  }
 }
 
 interface Badge {
@@ -47,12 +37,12 @@ export * from 'types/components/marquee'
 export * from 'types/components/resume'
 export * from 'types/components/spotify'
 export * from 'types/components/trello'
+export * from 'types/components/desktop'
 
 export type { 
   Layout,
   Head,
   Hero,
-  Desktop,
   Badge,
   Folder
 }

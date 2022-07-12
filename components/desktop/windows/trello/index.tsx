@@ -7,6 +7,8 @@ import type { trelloWindow } from 'types/components'
 
 const Trello = forwardRef<HTMLDivElement, trelloWindow>(({ content, className, visible, id }, ref) => {
   content = content.filter(({ more }) => more);
+
+  console.log("trello content: ", content);  
   
   return (
     <div ref={ref} className={`${styles.window_outer} ${className} ${!visible ? styles.hidden : ""}`} id={id}>

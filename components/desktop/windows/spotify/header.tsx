@@ -1,19 +1,11 @@
 import styles from 'styles/components/desktop/windows/spotify/header.module.scss'
 import { Spotify } from 'logos'
 import Image from 'next/image'
+import type { spotifyHeader } from 'types/components'
 
-interface Header {
-  name: string
-  owner: {
-    url: string
-    name: string
-  }
-  url: string
-  image: string
-}
-
-export const Header: React.FC<Header> = ({ name, owner, url, image }) => (
-  <div className={styles.container}>
+function Header({ name, owner, url, image }:spotifyHeader) {
+  return (
+    <div className={styles.container}>
       <div className={styles.link}>
         { image.length ? <Image width="80" height="80" src={image} alt={name} /> : null }
       </div>
@@ -31,4 +23,7 @@ export const Header: React.FC<Header> = ({ name, owner, url, image }) => (
         </div>
       </div>
     </div>
-);
+  )
+}
+
+export { Header }
