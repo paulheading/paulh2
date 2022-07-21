@@ -6,9 +6,7 @@ import { Footer } from 'components/desktop/windows/trello/footer'
 import type { trelloWindow } from 'types/components'
 
 const Trello = forwardRef<HTMLDivElement, trelloWindow>(({ content, className, visible, id }, ref) => {
-  content = content.filter(({ more }) => more);
-
-  console.log("trello content: ", content);  
+  content = content.filter(({ more }) => more);  
   
   return (
     <div ref={ref} className={`${styles.window_outer} ${className} ${!visible ? styles.hidden : ""}`} id={id}>
