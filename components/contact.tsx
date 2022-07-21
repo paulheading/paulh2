@@ -3,7 +3,7 @@ import styles from 'styles/components/contact.module.scss'
 function Contact() {
 
   return (
-<form name="contact" method="POST" action="/index?form=success">
+<form name="contact" method="POST" action="index/?form=success">
       <input type="hidden" name="form-name" value="contact" />
       <p>
 <input type="text" name="firstname" id="firstname" />
