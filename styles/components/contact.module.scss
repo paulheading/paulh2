@@ -73,9 +73,9 @@
   }
 
   @include large-down {
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
-    padding-top: 0.75rem;
+    padding-right: $padding-row-hz;
+    padding-left: $padding-row-hz;
+    padding-top: $padding-row-hz;
   }
 
   input {
@@ -91,8 +91,8 @@
 .tag_row {
   composes: row;
   justify-content: flex-start;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  padding-bottom: $padding-row-hz;
+  padding-top: $padding-row-hz;
 
   @include large-down {
     grid-auto-flow: column;
@@ -102,7 +102,7 @@
 }
 
 .tag {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem $padding-row-hz;
   border-radius: 0.25rem;
   background-color: $sky;
   color: black;
@@ -132,8 +132,8 @@
 
 .wrap_textarea {
   @include large-down {
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
+    padding-right: $padding-row-hz;
+    padding-left: $padding-row-hz;
   }
 }
 
@@ -161,5 +161,12 @@
 }
 
 .alert {
-  grid-column: 2 / 3;
+  @include large-up {
+    grid-column: 2 / 3;
+  }
+
+  @include large-down {
+    margin-right: -$padding-row-hz;
+    margin-left: -$padding-row-hz;
+  }
 }

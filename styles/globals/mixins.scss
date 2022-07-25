@@ -12,7 +12,7 @@
   }
 
   @include focus {
-    background-color: $focus;
+    outline: none;
 
     &,
     &::placeholder {
