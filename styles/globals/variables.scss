@@ -62,9 +62,17 @@ $font-size-body: 1.25rem;
 $font-size-h5: 1.125rem;
 $font-size-h6: 1rem;
 
-$status-neutral: hsl(205, 100%, 37%);
-$status-error: hsl(0, 45%, 37%);
-$status-success: hsl(120, 30%, 37%);
+$c-status-neutral-fade: hsl(205, 100%, 95%);
+$c-status-neutral-light: hsl(205, 100%, 75%);
+$c-status-neutral: hsl(205, 100%, 37%);
+
+$c-status-error-fade: hsl(0, 45%, 95%);
+$c-status-error-light: hsl(0, 45%, 75%);
+$c-status-error: hsl(0, 45%, 37%);
+
+$c-status-success-fade: hsl(120, 30%, 95%);
+$c-status-success-light: hsl(120, 30%, 75%);
+$c-status-success: hsl(120, 30%, 37%);
 
 $focus: hsl(45, 100%, 90%);
 $focus--dark: hsl(45, 100%, 65%);

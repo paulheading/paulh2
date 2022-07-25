@@ -1,0 +1,17 @@
+@import "styles/globals/mixins";
+
+.alert {
+  background-color: $c-status-neutral-fade;
+  color: $c-status-neutral;
+  padding: 0.75rem;
+}
+
+.alert.success {
+  background-color: $c-status-success-fade;
+  color: $c-status-success;
+}
+
+.alert.error {
+  background-color: $c-status-error-fade;
+  color: $c-status-error;
+}

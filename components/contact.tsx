@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import styles from 'styles/components/contact.module.scss'
-// import { printError } from 'scripts/functions'
-// import { Alert } from 'components'
+import { Alert } from 'components'
 import gsap from 'gsap'
 
 interface form {
@@ -17,42 +16,96 @@ interface data extends form {
   [key: string]: string
 }
 
+interface error {
+  type: string
+}
+
+function printError({ type }:error):string {
+  switch (type) {
+    case "pattern" : return "This email address isn't valid"
+    case "required" : return "Please fill in your email address"
+    default: return ""
+  }
+}
+
 function Contact() {
   const { register, handleSubmit, formState: { errors } } = useForm<form>();
   const [formSuccess, setFormSuccess] = useState(false);
   const encode = (data:data) => Object.keys(data).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])).join("&");
   const fromInput = { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ };
-  const alertRef = useRef(null);
-  
-  const onSubmit = (form:form) => {
+  const refs = {
+    success: useRef<HTMLDivElement>(null),
+    button: useRef<HTMLButtonElement>(null),
+    form: useRef<HTMLFormElement>(null)
+  }
+
+  function onSubmit(form:form) {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...form }) 
     })
-    .then(() => {
-      const form = (document.getElementsByTagName("form")[0] as HTMLFormElement);
-      setFormSuccess(true);
-      form.reset();      
-    })
+    .then(() => setFormSuccess(true))
     .catch(error => alert(error));
   }
 
   useEffect(() => {
-    if (formSuccess && alertRef) {
-      gsap.to(alertRef.current,{ delay: 1, opacity: 0, onComplete: () => setFormSuccess(false) });
+    if (!formSuccess || !refs.success) return;
+    gsap.to(refs.success.current, {
+      onStart: () => {
+        if (refs.form.current !== null) refs.form.current.reset();
+        if (refs.button.current !== null) refs.button.current.blur();
+      },
+      delay: 3, 
+      opacity: 0, 
+      onComplete: () => setFormSuccess(false)
+    });
+  },[formSuccess,refs.button,refs.form,refs.success]);
+
+  const values = {
+    form: {
+      onSubmit: handleSubmit(onSubmit),
+      className: styles.form,
+      'data-netlify': true,
+      name: 'contact', 
+      method: 'post',
+      ref: refs.form
+    },
+    subject: {
+      type: 'text', 
+      name: 'subject',
+      id: 'subject',
+      placeholder: 'Hey there!'
+    },
+    from: {
+      type: 'email', 
+      name: 'from',
+      id: 'from',
+      placeholder: 'friendly@visitor.org'
+    },
+    message: {
+      className: styles.textarea, 
+      name: 'message',
+      id: 'message',
+      placeholder: 'Message'
     }
-  },[formSuccess]);
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.wrap}>
-        {/* { formSuccess && <Alert ref={alertRef} success className={styles.alert}>Success!</Alert> } */}
         <div className={styles.topbar}>
           <button className={styles.close_icon}>close</button>
           <button className={styles.minimise_icon}>minimise</button>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form} data-netlify="true" name="contact" method="post">
+        <form {...values.form}>
+          { formSuccess && <div ref={refs.success} className={styles.success}>
+            <div>
+              <span className={styles.confetti}>🎉</span>
+              <h1 className={styles.success_title}>Success!</h1>
+              <p className={styles.success_tagline}>I&apos;ll be in touch soon</p>
+            </div>
+          </div> }
           <div className={styles.wrap_form}>
             <div className={styles.tag_row}>
               <div className={styles.label}>To</div>
@@ -60,18 +113,18 @@ function Contact() {
             </div>
             <div className={styles.row}>
               <label htmlFor="subject">Subject</label>
-              <input {...register("subject")} type="text" name="subject" id="subject" placeholder="Hey there!" />
+              <input {...register("subject")} {...values.subject} />
             </div>
             <div className={styles.row}>
               <label htmlFor="from">From</label>
-              <input {...register("from", fromInput)} type="text" name="from" id="from" placeholder="friendly@visitor.org" />
-              {/* { errors.from && printError(errors.from) } */}
+              <input {...register("from", fromInput)} {...values.from} />
+              { errors.from && <Alert className={styles.alert}>{ printError(errors.from) }</Alert> }
             </div>
             <div className={styles.wrap_textarea}>
-              <textarea {...register("message")} className={styles.textarea} name="message" id="message" placeholder="Message" />
+              <textarea {...register("message")} {...values.message} />
             </div>
             <div className="text-align-right">
-              <button className={styles.submit} type="submit">Submit</button>
+              <button ref={refs.button} className={styles.submit} type="submit">Submit</button>
             </div>
           </div>
         </form>

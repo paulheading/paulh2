@@ -27,11 +27,12 @@ interface Badge {
   className?: string
 }
 
-interface Folder {
-  children: React.ReactNode
-  visible?: boolean
-  toggle: (open:boolean) => void
-} 
+interface Alert {
+  className: string
+  success?: boolean
+  error?: boolean
+  children?: React.ReactNode
+}
 
 export * from 'types/components/marquee'
 export * from 'types/components/resume'
@@ -44,5 +45,5 @@ export type {
   Head,
   Hero,
   Badge,
-  Folder
+  Alert
 }

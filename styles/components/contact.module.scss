@@ -51,6 +51,7 @@
 
 .form {
   background-color: white;
+  position: relative; // position the success message
   text-align: left;
 }
 
@@ -129,13 +130,36 @@
   @include invisible-button;
 }
 
-.alert {
-  margin-bottom: 1rem;
-}
-
 .wrap_textarea {
   @include large-down {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
   }
+}
+
+.success {
+  @include inset;
+  background: rgba(white,0.9);
+  place-items: center;
+  text-align: center;
+  position: absolute;  
+  display: grid;
+  margin: auto;
+  z-index: 2;
+}
+
+.confetti {
+  font-size: 4rem;
+}
+
+.success_title {
+  line-height: 1.3;
+}
+
+.success_tagline {
+  margin-bottom: 4rem;
+}
+
+.alert {
+  grid-column: 2 / 3;
 }
