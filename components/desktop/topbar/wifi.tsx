@@ -1,27 +1,26 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
-const signal = (target: null | SVGSVGElement) => {
-  if (target) {
-    const tl = gsap.timeline({ delay: 0.7, repeat: -1, defaults: { duration: 0.1, stagger: 0.3, delay: 0.7 } });
+interface desktopWifi {
+  count: number
+}
+
+function Wifi({ count }:desktopWifi) {
+  const wifi = useRef<null | SVGSVGElement>(null);
+  useEffect(() => {
+    if (!wifi.current) return;
+    const tl = gsap.timeline();
+    const target = wifi.current;
     const { children } = target;
     const low = children[0];
     const medium = children[1];
     const high = children[2];
-    tl.to([low, medium, high], { opacity: 1 })
-      .to([high, medium], { opacity: 0.5 })
-      .to([medium], { opacity: 1 })
-      .to([medium], { opacity: 0.5 })
-      .to([medium, high], { opacity: 1 })
-      .to([high, medium, low], { opacity: 0.5 });
-  }
-}
-
-export const Wifi: React.FC = () => {
-  const wifi = useRef<null | SVGSVGElement>(null);
-  useEffect(() => {
-    signal(wifi.current)
-  }, []);
+    tl.set([low, medium, high], { opacity: 1 })
+      .set([high, medium], { delay: 0.5, stagger: 0.5, opacity: 0.5 })
+      .set([medium], { delay: 0.5, opacity: 1 })
+      .set([medium], { delay: 0.5, opacity: 0.5 })
+      .set([medium, high], { delay: 0.5, stagger: 0.5, opacity: 1 });
+  }, [count]);
   return (
     <svg ref={wifi} xmlns="http://www.w3.org/2000/svg" fill="#072f23" viewBox="0 0 40 40" height="40" width="40">
       <path className="low" d="M15,28.3l5,5l5-5C22.2,25.6,17.8,25.6,15,28.3z" />
@@ -30,3 +29,5 @@ export const Wifi: React.FC = () => {
     </svg>
   )
 }
+
+export { Wifi }

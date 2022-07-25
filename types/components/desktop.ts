@@ -10,6 +10,7 @@ interface Desktop {
     _2021: any
     _2022: any
   }
+  count: number
 }
 
 interface desktopTheme {

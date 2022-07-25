@@ -9,17 +9,18 @@ import { Draggable } from 'gsap/dist/Draggable'
 import gsap from 'gsap'
 import type { Desktop as DesktopType } from 'types/components'
 
+const show = { display: "block", opacity: 1 };
+const hide = { opacity: 0, display: "none" };
+
 function toggleWindow(ref: HTMLDivElement | null, open: boolean ) {
   if (!ref) return
   const tl = gsap.timeline({ defaults: { duration: 0.2, ease: "power1.in" } });
-  const show = { display: "block", opacity: 1 };
-  const hide = { opacity: 0, display: "none" };
   return open ? tl.to(ref,{ scale: 0.5 }).set(ref, hide) : tl.set(ref, show).to(ref,{ scale: 1 }) ;
 }
 
-function Desktop({ projects, gem, npm, spotify }:DesktopType) {
+function Desktop({ projects, gem, npm, spotify, count }:DesktopType) {
   const windows = useRef<HTMLDivElement>(null);
-
+  
   const window = {
     spotify: {
       _2020: {
@@ -60,7 +61,7 @@ function Desktop({ projects, gem, npm, spotify }:DesktopType) {
     
   return (
     <div className={styles.container}>
-      <Topbar />
+      <Topbar count={count} />
       <div className={styles.canvas}>
         <div className={styles.wrap}>
         <div ref={windows} className={styles.windows}>
