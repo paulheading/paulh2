@@ -1,11 +1,11 @@
 import { getLayoutData, getTrelloData, getTreehouseData, getMediumData } from 'scripts'
 import styles from 'styles/pages/resume.module.scss'
 import { Layout, CustomHead as Head } from 'components'
-import type { Resume as ResumeType } from 'types/pages'
+import type { resumePage } from 'types/pages'
 import { resume } from 'scripts/seo'
 import { Row, NameRow, BioRow, SkillsRow } from 'components/resume/row'
 
-function Resume(props:ResumeType) {
+function Resume(props:resumePage) {
   const { pages, projects, roles, education, skills, articles } = props;
   const biography = pages.filter(page => page.name === 'Biography')[0];
   const projectsRow = { cards: projects, articles };
@@ -18,19 +18,12 @@ function Resume(props:ResumeType) {
       <div className={styles.container}>
         <div className={styles.wrap}>
           <div className={styles.page}>
-
             <NameRow />
-
             <BioRow { ...biography } />
-
             <Row title="Projects" { ...projectsRow } />
-            
             <Row title="Roles" { ...rolesRow } />
-
             <SkillsRow skills={ skills } />
-
             <Row title="Education" { ...educationRow } />
-
           </div>
         </div>
       </div>

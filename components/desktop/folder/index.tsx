@@ -2,9 +2,9 @@ import styles from 'styles/components/desktop/folder.module.scss'
 import { Closed } from 'components/desktop/folder/closed'
 import { Open } from 'components/desktop/folder/open'
 import { useState } from 'react'
-import type { Folder as FolderType } from 'types/components'
+import type { desktopFolder } from 'types/components'
 
-function Folder({ children, visible = false, toggle }:FolderType) {
+function Folder({ children, visible = false, toggle }:desktopFolder) {
   const [open, setOpen] = useState(visible);
 
   function sendToggle() {

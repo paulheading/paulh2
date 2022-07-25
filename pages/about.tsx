@@ -1,11 +1,11 @@
 import { getLayoutData, getTrelloData } from 'scripts'
 import styles from 'styles/pages/about.module.scss'
 import { Layout, CustomHead as Head } from 'components'
-import type { About as AboutType } from 'types/pages'
+import type { aboutPage } from 'types/pages'
 import { about } from 'scripts/seo'
 import parse from 'html-react-parser'
 
-function About(props:AboutType) {
+function About(props:aboutPage) {
   const { pages } = props;
   const page = pages.filter(page => page.name === 'About')[0];
   

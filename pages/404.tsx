@@ -1,10 +1,10 @@
 import { getLayoutData } from 'scripts'
 import styles from 'styles/pages/notfound.module.scss'
 import { Layout, CustomHead as Head } from 'components'
-import type { NotFound as NotFoundType } from 'types/pages'
+import type { notfoundPage } from 'types/pages'
 import { notfound } from 'scripts/seo'
 
-function NotFound(props:NotFoundType) {
+function NotFound(props:notfoundPage) {
   return (
     <Layout { ...props }>
       <Head {...notfound} />

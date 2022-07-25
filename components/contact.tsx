@@ -3,24 +3,9 @@ import { useForm } from 'react-hook-form'
 import styles from 'styles/components/contact.module.scss'
 import { Alert } from 'components'
 import gsap from 'gsap'
+import type { contactError, contactData, contactForm } from 'types/components'
 
-interface form {
-  from: string
-  message: string
-  subject: string
-  index: string
-}
-
-interface data extends form {
-  "form-name": string
-  [key: string]: string
-}
-
-interface error {
-  type: string
-}
-
-function printError({ type }:error):string {
+function printError({ type }:contactError):string {
   switch (type) {
     case "pattern" : return "This email address isn't valid"
     case "required" : return "Please fill in your email address"
@@ -29,9 +14,9 @@ function printError({ type }:error):string {
 }
 
 function Contact() {
-  const { register, handleSubmit, formState: { errors } } = useForm<form>();
+  const { register, handleSubmit, formState: { errors } } = useForm<contactForm>();
   const [formSuccess, setFormSuccess] = useState(false);
-  const encode = (data:data) => Object.keys(data).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])).join("&");
+  const encode = (data:contactData) => Object.keys(data).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])).join("&");
   const fromInput = { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ };
   const refs = {
     success: useRef<HTMLDivElement>(null),
@@ -39,7 +24,7 @@ function Contact() {
     form: useRef<HTMLFormElement>(null)
   }
 
-  function onSubmit(form:form) {
+  function onSubmit(form:contactForm) {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

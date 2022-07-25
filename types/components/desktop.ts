@@ -24,7 +24,7 @@ interface desktopTheme {
   visible?: boolean
 }
 
-interface Folder {
+interface desktopFolder {
   children: React.ReactNode
   visible?: boolean
   toggle: (open:boolean) => void
@@ -33,5 +33,5 @@ interface Folder {
 export type {
   Desktop,
   desktopTheme,
-  Folder
+  desktopFolder
 }

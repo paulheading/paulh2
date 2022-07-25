@@ -43,6 +43,12 @@ interface resumeCardName {
   more: trelloCard["more"]
 }
 
+interface resumeStatus {
+  dueComplete: boolean 
+  due: string
+  start: string
+}
+
 export type {
   resumeRow,
   resumeBiography,
@@ -50,5 +56,6 @@ export type {
   resumeSkill,
   resumeSkills,
   resumeDesc,
-  resumeCardName
+  resumeCardName,
+  resumeStatus
 }

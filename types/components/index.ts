@@ -39,6 +39,7 @@ export * from 'types/components/resume'
 export * from 'types/components/spotify'
 export * from 'types/components/trello'
 export * from 'types/components/desktop'
+export * from 'types/components/contact'
 
 export type { 
   Layout,

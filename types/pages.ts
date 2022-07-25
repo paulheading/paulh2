@@ -2,15 +2,15 @@
 import { trelloCard, mediumArticle } from 'types/scripts'
 import { Layout, resumeSkill } from 'types/components'
 
-interface Home extends Layout {}
+interface homePage extends Layout {}
 
-interface About extends Layout {
+interface aboutPage extends Layout {
   pages: trelloCard[]
   roles: trelloCard[]
   education: trelloCard[]
 }
 
-interface Resume extends Layout {
+interface resumePage extends Layout {
   pages: trelloCard[]
   roles: trelloCard[]
   education: trelloCard[]
@@ -18,11 +18,11 @@ interface Resume extends Layout {
   skills: resumeSkill[]
 }
 
-interface NotFound extends Layout {}
+interface notfoundPage extends Layout {}
 
 export type {
-  Home,
-  About,
-  Resume,
-  NotFound
+  homePage,
+  aboutPage,
+  resumePage,
+  notfoundPage
 }
