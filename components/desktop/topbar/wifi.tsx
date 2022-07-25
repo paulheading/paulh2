@@ -17,9 +17,8 @@ function Wifi({ count }:desktopWifi) {
     const high = children[2];
     tl.set([low, medium, high], { opacity: 1 })
       .set([high, medium], { delay: 0.5, stagger: 0.5, opacity: 0.5 })
-      .set([medium], { delay: 0.5, opacity: 1 })
-      .set([medium], { delay: 0.5, opacity: 0.5 })
-      .set([medium, high], { delay: 0.5, stagger: 0.5, opacity: 1 });
+      .set([medium, high], { delay: 0.5, stagger: 0.5, opacity: 1 })
+      .set(high, { delay: 0.5, opacity: 0.5 });
   }, [count]);
   return (
     <svg ref={wifi} xmlns="http://www.w3.org/2000/svg" fill="#072f23" viewBox="0 0 40 40" height="40" width="40">
